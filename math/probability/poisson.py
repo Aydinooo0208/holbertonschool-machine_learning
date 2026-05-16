@@ -46,3 +46,20 @@ class Poisson:
             k_factorial *= i
 
         return (self.e ** -self.lambtha * self.lambtha ** k) / k_factorial
+
+    def cdf(self, k):
+        """
+        Calculates the value of the CDF for a given number of successes
+
+        Args:
+            k: number of successes
+
+        Returns:
+            CDF value for k, or 0 if k is out of range
+        """
+        k = int(k)
+
+        if k < 0:
+            return 0
+
+        return sum(self.pmf(i) for i in range(0, k + 1))
