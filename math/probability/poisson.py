@@ -5,6 +5,8 @@
 class Poisson:
     """Represents a Poisson distribution"""
 
+    e = 2.7182818285
+
     def __init__(self, data=None, lambtha=1.):
         """
         Initializes Poisson distribution
@@ -39,13 +41,8 @@ class Poisson:
         if k < 0:
             return 0
 
-        # Euler's number (no math/numpy import)
-        e = 2.7182818285
-
-        # Calculate k! manually
         k_factorial = 1
         for i in range(1, k + 1):
             k_factorial *= i
 
-        # PMF formula: (e^-λ * λ^k) / k!
-        return (e ** -self.lambtha * self.lambtha ** k) / k_factorial
+        return (self.e ** -self.lambtha * self.lambtha ** k) / k_factorial
